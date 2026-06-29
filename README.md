@@ -1,16 +1,22 @@
-# React + Vite
+# Visa Jobs
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web app that helps international students find jobs that offer visa sponsorship.
 
-Currently, two official plugins are available:
+## Partners
+- Farah Aburokba (Student A)
+- Cesar Cervera (Student B)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech Stack
+- React with Vite
+- React Router DOM for client-side routing
+- Parse/Back4App as the data layer
 
-## React Compiler
+## Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Install dependencies:
+Run the development server:
+## Features
+- Browse job postings that offer visa sponsorship
+- Search jobs by title or company
+- Filter jobs by job type
+- Sidebar with AI tools for international students
