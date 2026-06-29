@@ -1,28 +1,27 @@
 // search bar component for filtering jobs
-import { html } from "https://unpkg.com/htm/preact/standalone.module.js";
-
 // allows users to search by keyword and filter by field
 
 export function SearchBar({ searchTerm, setSearchTerm, setJobTypeFilter }) {
-  return html`
-    <div class="searchBar">
+  return (
+    <div className="searchBar">
       <h1>Get a job that will sponsor your visa</h1>
-      <div class="searchRow">
+      <div className="searchRow">
         <input
           type="text"
           placeholder="Job title, skill or company..."
-          value=${searchTerm}
-          onInput=${(e) => setSearchTerm(e.target.value)}
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <select onInput=${(e) => setJobTypeFilter(e.target.value)}>
+        <select onChange={(e) => setJobTypeFilter(e.target.value)}>
           <option value="">All Types</option>
           <option value="Full-time">Full-time</option>
           <option value="Internship">Internship</option>
           <option value="Part-time">Part-time</option>
         </select>
+        {/* Clear button resets search and filter */}
         <button
           type="button"
-          onClick=${() => {
+          onClick={() => {
             setSearchTerm("");
             setJobTypeFilter("");
           }}
@@ -31,5 +30,5 @@ export function SearchBar({ searchTerm, setSearchTerm, setJobTypeFilter }) {
         </button>
       </div>
     </div>
-  `;
+  );
 }

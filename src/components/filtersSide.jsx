@@ -1,9 +1,7 @@
 // filters sidebar component
-import { html } from "https://unpkg.com/htm/preact/standalone.module.js";
-
 // allows users to filter jobs by type and field
 export function FiltersSide() {
-  return html`
+  return (
     <div>
       <h2>Filters</h2>
       <div>
@@ -19,5 +17,5 @@ export function FiltersSide() {
         <label><input type="checkbox" /> Part-time</label><br />
       </div>
     </div>
-  `;
+  );
 }

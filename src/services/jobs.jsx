@@ -1,8 +1,5 @@
 import Parse from 'parse';
 import Job from '../models/Job.js';
-import User from '../models/User.js';
-import Application from '../models/Applications.js';
-
 // gets all jobs from the database and returns the promise array of all job objects
 export async function getAllJobs() {
   try{
