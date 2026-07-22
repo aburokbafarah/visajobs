@@ -1,0 +1,11 @@
+{
+  "applications": {
+    "_default": {
+      "link": "visajobs"
+    },
+    "visajobs": {
+      "applicationId": "",
+      "masterKey": ""
+    }
+  }
+}

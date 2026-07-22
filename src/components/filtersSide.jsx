@@ -1,21 +1,51 @@
+import {
+  Autocomplete,
+  TextField,
+  Paper,
+  Box,
+  Typography,
+  Divider,
+  FormGroup,
+  FormControlLabel,
+  Checkbox,
+} from '@mui/material';
+
+const VISA_TYPE_OPTIONS = ['H-1B', 'OPT', 'CPT'];
+
 // filters sidebar component
 // allows users to filter jobs by type and field
-export function FiltersSide() {
+export function FiltersSide({ selectedVisaTypes, setSelectedVisaTypes }) {
   return (
-    <div>
-      <h2>Filters</h2>
-      <div>
-        <p><strong>Visa Type</strong></p>
-        <label><input type="checkbox" /> H-1B</label><br />
-        <label><input type="checkbox" /> OPT</label><br />
-        <label><input type="checkbox" /> CPT</label><br />
-      </div>
-      <div>
-        <p><strong>Job Type</strong></p>
-        <label><input type="checkbox" /> Full-time</label><br />
-        <label><input type="checkbox" /> Internship</label><br />
-        <label><input type="checkbox" /> Part-time</label><br />
-      </div>
-    </div>
+    <Paper
+      variant="outlined"
+      sx={{ width: 280, flexShrink: 0, p: 2.5 }}
+    >
+      <Typography variant="h6" sx={{ mb: 2 }}>Filters</Typography>
+
+      <Box sx={{ mb: 3 }}>
+        <Typography variant="subtitle2" sx={{ mb: 1 }}>Visa Type</Typography>
+        <Autocomplete
+          multiple
+          size="small"
+          options={VISA_TYPE_OPTIONS}
+          value={selectedVisaTypes}
+          onChange={(event, newValue) => setSelectedVisaTypes(newValue)}
+          renderInput={(params) => (
+            <TextField {...params} placeholder="Select visa types" />
+          )}
+        />
+      </Box>
+
+      <Divider sx={{ mb: 2 }} />
+
+      <Box>
+        <Typography variant="subtitle2" sx={{ mb: 1 }}>Job Type</Typography>
+        <FormGroup>
+          <FormControlLabel control={<Checkbox />} label="Full-time" />
+          <FormControlLabel control={<Checkbox />} label="Internship" />
+          <FormControlLabel control={<Checkbox />} label="Part-time" />
+        </FormGroup>
+      </Box>
+    </Paper>
   );
 }

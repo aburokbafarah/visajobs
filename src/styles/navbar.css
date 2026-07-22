@@ -1,97 +1,8 @@
-/* flexbox
-flex turns the container into a flex box, and all the other elements
-into children of the parent */
-/* padding, first number is top and bottom
-second number is left and right ---> vertical horizontal pattern*/
-/* gpa is space between childe elements */
-nav {
-  display: flex;
-  background-color: #6b7280;
-  padding: 16px 32px;
-  gap: 16px;
-  align-items: center;
-}
-
-.logo {
-  color: #ffffff;
-  font-weight: 700; /* 700 = bold*/
-  text-decoration: none;
-  /* linear gradient used for color fading here */
-  /* calculate the angle using the clock method,
-     0 is 12, 90 is 3, 180 is 6, 270 is 9*/
-  /* deg is for degree (duh)*/
-  /* angle is where it's heading */
-  background: linear-gradient(135deg, #4f46e5, #7c3aed);
-  padding: 8px 18px;
-  border-radius: 8px; /* rounds the corners of the logo by 8px*/
-}
-/* adding the house logo */
-.fa-house {
-  color: white;
-  font-size: 20px;
-}
-.navLinks {
-  display: flex;
-  gap: 28px;
-  flex: 1; /* grow and fill all remaining space in the parent */
-  justify-content: center;
-}
-
-.navLinks a {
-  /* targets all a tags inside navlinks*/
-  color: #ffffff;
-  text-decoration: none;
-}
-/* hover is a psudoclass*/
-.navLinks a:hover {
-  color: #c026d3; /* upond hover, it turns pink and adds underlines*/
-  text-decoration: underline;
-}
-
-/* highlights the currently active page*/
-.navLinks a.active {
-  color: #c026d3;
-  font-weight: 600;
-}
-.navLinks a.active2 {
-  color: #c026d3;
-  font-weight: 600;
-}
-.navLinks a.active3 {
-  color: #c026d3;
-  font-weight: 600;
-}
-.navSign {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.navSign button:first-child {
-  color: #ffffff;
-  background: transparent;
-  border: 1.5px solid rgba(255, 255, 255, 0.5);
-  padding: 8px 18px;
-  border-radius: 99px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.navSign button:last-child {
-  color: #ffffff;
-  background-color: #c026d3;
-  border: none;
-  padding: 8px 18px;
-  border-radius: 99px;
-  cursor: pointer;
-  font-size: 14px;
-}
-/* this is for the anumation bar! */
+/* marquee ticker beneath the nav bar */
 .animationBar {
   overflow: hidden;
-  border-top: 1px solid #6b7280;
-  border-bottom: 1px solid #6b7280;
-  padding: 10px 0;
+  padding: 14px 0;
+  border-top: 1px solid #2e303a;
 }
 
 .animationBarIn {
@@ -104,7 +15,7 @@ nav {
 .animationBarIn span {
   font-size: 14px;
   font-weight: 500;
-  color: #4f46e5;
+  color: #c084fc;
   white-space: nowrap;
   letter-spacing: 0.06em;
 }

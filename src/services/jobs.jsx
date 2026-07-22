@@ -34,6 +34,21 @@ export async function getJobsBySponsorshipType(type) {
     return [];
   }
 }
+
+// by multiple visa types (visa type filter, e.g. H-1B/OPT/CPT)
+// returns all jobs when no types are selected
+export async function getJobsBySponsorshipTypes(types) {
+  try {
+    const query = new Parse.Query(Job);
+    if (types && types.length > 0) {
+      query.containedIn('visaType', types);
+    }
+    return await query.find();
+  } catch (error) {
+    console.error('Error fetching jobs by visa types:', error);
+    return [];
+  }
+}
 // by company
 export async function getJobsByCompany(company) {
   try {

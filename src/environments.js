@@ -1,4 +1,3 @@
-export const APPLICATION_ID ='Gwt4oKUEwIKX6oyCutunL4TvhW3N2v1B8f97FPHH';
-export const JAVASCRIPT_KEY ='5QG8GXvmRQwgKTGMvFoOloLxQM47JZn36X6PddVX';
-export const SERVER_URL ='https://parseapi.back4app.com';
-
+export const APPLICATION_ID = import.meta.env.VITE_PARSE_APP_ID;
+export const JAVASCRIPT_KEY = import.meta.env.VITE_PARSE_JS_KEY;
+export const SERVER_URL = import.meta.env.VITE_PARSE_SERVER_URL;

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { getAllJobs } from '../../services/jobs.jsx';
+import { Container, Box, Stack } from '@mui/material';
+import { getJobsBySponsorshipTypes } from '../../services/jobs.jsx';
 import { JobCard } from '../jobCard';
 import { SearchBar } from '../searchBar';
 import { FiltersSide } from '../filtersSide';
@@ -10,13 +11,15 @@ export default function Jobs() {
   const [jobs, setJobs] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [jobTypeFilter, setJobTypeFilter] = useState('');
+  const [visaTypeFilter, setVisaTypeFilter] = useState([]);
 
-  // Fetch jobs from Parse on component mount
+  // Fetch jobs from Parse whenever the visa type filter changes
+  // (queries containedIn('sponsorship', ...) when types are selected, all jobs otherwise)
   useEffect(() => {
-    getAllJobs().then((data) => {
+    getJobsBySponsorshipTypes(visaTypeFilter).then((data) => {
       setJobs(data);
     });
-  }, []);
+  }, [visaTypeFilter]);
 
   // Filter jobs based on search term and job type
   const filteredJobs = jobs.filter(
@@ -27,24 +30,31 @@ export default function Jobs() {
   );
 
   return (
-    <div className="fullContainer">
-      <aside className="filtersSide">
-        <FiltersSide />
-      </aside>
-      <section className="mainSearchInfo">
-        <SearchBar
-          searchTerm={searchTerm}
-          setSearchTerm={setSearchTerm}
-          setJobTypeFilter={setJobTypeFilter}
+    <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Box sx={{ display: 'flex', gap: 3, alignItems: 'flex-start' }}>
+        <FiltersSide
+          selectedVisaTypes={visaTypeFilter}
+          setSelectedVisaTypes={setVisaTypeFilter}
         />
-        {/* Map over filtered jobs and display each as a JobCard */}
-        {filteredJobs.map((job) => (
-          <JobCard key={job.id} job={job} />
-        ))}
-      </section>
-      <aside className="aiTools">
-        <AiTools />
-      </aside>
-    </div>
+
+        <Box sx={{ flex: 1, minWidth: 0 }}>
+          <SearchBar
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            setJobTypeFilter={setJobTypeFilter}
+          />
+          {/* Map over filtered jobs and display each as a JobCard */}
+          <Stack spacing={2} sx={{ mt: 3 }}>
+            {filteredJobs.map((job) => (
+              <JobCard key={job.id} job={job} />
+            ))}
+          </Stack>
+        </Box>
+
+        <Box sx={{ width: 260, flexShrink: 0 }}>
+          <AiTools />
+        </Box>
+      </Box>
+    </Container>
   );
 }
