@@ -1,4 +1,4 @@
-# Visa Jobs
+# Sponsify
 
 A web app that helps international students find jobs that offer visa sponsorship.
 

@@ -1,21 +1,20 @@
 import { createTheme } from '@mui/material/styles';
 
-// Matches the existing dark-mode CSS variables in src/index.css
-// (--accent, --bg, --text-h, --text) so MUI components blend with
-// the app's current lavender/purple accent instead of MUI's default blue.
+// Light theme - matches the light-mode CSS variables in src/index.css
+// (--accent, --bg, --text-h, --text) with a blue accent.
 const theme = createTheme({
   palette: {
-    mode: 'dark',
+    mode: 'light',
     primary: {
-      main: '#c084fc',
+      main: '#2563eb',
     },
     background: {
-      default: '#16171d',
-      paper: '#1f2028',
+      default: '#ffffff',
+      paper: '#f8fafc',
     },
     text: {
-      primary: '#f3f4f6',
-      secondary: '#9ca3af',
+      primary: '#0f172a',
+      secondary: '#475569',
     },
   },
 });

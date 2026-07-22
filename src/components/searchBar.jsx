@@ -1,14 +1,9 @@
-import { Typography } from '@mui/material';
-
 // search bar component for filtering jobs
 // allows users to search by keyword and filter by field
 
 export function SearchBar({ searchTerm, setSearchTerm, setJobTypeFilter }) {
   return (
     <div className="searchBar">
-      <Typography variant="h3" sx={{ mb: 2 }}>
-        Get a job that will sponsor your visa
-      </Typography>
       <div className="searchRow">
         <input
           type="text"

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Container, Box, Stack } from '@mui/material';
+import { Container, Box, Stack, Typography } from '@mui/material';
 import { getJobsBySponsorshipTypes } from '../../services/jobs.jsx';
 import { JobCard } from '../jobCard';
 import { SearchBar } from '../searchBar';
@@ -12,6 +12,7 @@ export default function Jobs() {
   const [searchTerm, setSearchTerm] = useState('');
   const [jobTypeFilter, setJobTypeFilter] = useState('');
   const [visaTypeFilter, setVisaTypeFilter] = useState([]);
+  const [jobTypeCheckboxFilter, setJobTypeCheckboxFilter] = useState([]);
 
   // Fetch jobs from Parse whenever the visa type filter changes
   // (queries containedIn('sponsorship', ...) when types are selected, all jobs otherwise)
@@ -26,15 +27,31 @@ export default function Jobs() {
     (job) =>
       (job.get('title').toLowerCase().includes(searchTerm.toLowerCase()) ||
         job.get('company').toLowerCase().includes(searchTerm.toLowerCase())) &&
-      (jobTypeFilter === '' || job.get('jobType') === jobTypeFilter)
+      (jobTypeFilter === '' || job.get('jobType') === jobTypeFilter) &&
+      (jobTypeCheckboxFilter.length === 0 ||
+        jobTypeCheckboxFilter.includes(job.get('jobType')))
   );
 
   return (
-    <Container maxWidth="lg" sx={{ py: 4 }}>
+    <Container maxWidth="lg" sx={{ py: 10 }}>
+      <Box sx={{ textAlign: 'center', mb: 6 }}>
+        <Typography variant="h3" sx={{ fontWeight: 700 }}>
+          Jobs
+        </Typography>
+        <Typography
+          variant="subtitle1"
+          sx={{ mt: 1, fontWeight: 300, color: 'primary.main' }}
+        >
+          Get a job that will sponsor your visa
+        </Typography>
+      </Box>
+
       <Box sx={{ display: 'flex', gap: 3, alignItems: 'flex-start' }}>
         <FiltersSide
           selectedVisaTypes={visaTypeFilter}
           setSelectedVisaTypes={setVisaTypeFilter}
+          selectedJobTypes={jobTypeCheckboxFilter}
+          setSelectedJobTypes={setJobTypeCheckboxFilter}
         />
 
         <Box sx={{ flex: 1, minWidth: 0 }}>

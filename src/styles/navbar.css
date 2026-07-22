@@ -1,8 +1,9 @@
-/* marquee ticker beneath the nav bar */
+/* marquee ticker beneath the nav bar - extra top padding gives it clear
+   separation from the AppBar above instead of crowding it */
 .animationBar {
   overflow: hidden;
-  padding: 14px 0;
-  border-top: 1px solid #2e303a;
+  padding: 20px 0;
+  border-top: 1px solid #e2e8f0;
 }
 
 .animationBarIn {
@@ -15,7 +16,7 @@
 .animationBarIn span {
   font-size: 14px;
   font-weight: 500;
-  color: #c084fc;
+  color: #2563eb;
   white-space: nowrap;
   letter-spacing: 0.06em;
 }

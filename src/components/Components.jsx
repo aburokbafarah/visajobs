@@ -1,7 +1,6 @@
 import {BrowserRouter as Router,Routes,Route, Navigate,} from 'react-router-dom';
 import { NavBar } from './navBar';
-import Home from './Home/Home';
-import Jobs from './Jobs/Jobs';
+import MainPage from './MainPage/MainPage';
 import AuthModule from './Auth/Auth';
 import AuthRegister from './Auth/AuthRegister';
 import AuthLogin from './Auth/AuthLogin';
@@ -17,9 +16,8 @@ export default function Components() {
         <Route path="/auth/register" element={<AuthRegister />} />
         <Route path="/auth/login" element={<AuthLogin />} />
 
-        {/* Protected routes */}
-        <Route path="/" element={<ProtectedRoute component={Home} />} />
-        <Route path="/jobs" element={<ProtectedRoute component={Jobs} />} />
+        {/* Protected route - single scrolling page (Home/Jobs/Resources sections) */}
+        <Route path="/" element={<ProtectedRoute component={MainPage} />} />
 
         {/* Catch all */}
         <Route path="*" element={<Navigate to="/auth" replace />} />

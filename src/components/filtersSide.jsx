@@ -11,10 +11,24 @@ import {
 } from '@mui/material';
 
 const VISA_TYPE_OPTIONS = ['H-1B', 'OPT', 'CPT'];
+const JOB_TYPE_OPTIONS = ['Full-time', 'Internship', 'Part-time'];
 
 // filters sidebar component
 // allows users to filter jobs by type and field
-export function FiltersSide({ selectedVisaTypes, setSelectedVisaTypes }) {
+export function FiltersSide({
+  selectedVisaTypes,
+  setSelectedVisaTypes,
+  selectedJobTypes,
+  setSelectedJobTypes,
+}) {
+  const toggleJobType = (jobType) => {
+    if (selectedJobTypes.includes(jobType)) {
+      setSelectedJobTypes(selectedJobTypes.filter((type) => type !== jobType));
+    } else {
+      setSelectedJobTypes([...selectedJobTypes, jobType]);
+    }
+  };
+
   return (
     <Paper
       variant="outlined"
@@ -41,9 +55,18 @@ export function FiltersSide({ selectedVisaTypes, setSelectedVisaTypes }) {
       <Box>
         <Typography variant="subtitle2" sx={{ mb: 1 }}>Job Type</Typography>
         <FormGroup>
-          <FormControlLabel control={<Checkbox />} label="Full-time" />
-          <FormControlLabel control={<Checkbox />} label="Internship" />
-          <FormControlLabel control={<Checkbox />} label="Part-time" />
+          {JOB_TYPE_OPTIONS.map((jobType) => (
+            <FormControlLabel
+              key={jobType}
+              control={
+                <Checkbox
+                  checked={selectedJobTypes.includes(jobType)}
+                  onChange={() => toggleJobType(jobType)}
+                />
+              }
+              label={jobType}
+            />
+          ))}
         </FormGroup>
       </Box>
     </Paper>
