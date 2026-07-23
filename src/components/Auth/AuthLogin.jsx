@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Box, Paper, Typography } from '@mui/material';
 import { loginUser, checkUser } from './AuthService';
 import AuthForm from './AuthForm';
 
@@ -48,15 +49,36 @@ const AuthLogin = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <AuthForm
-        user={currentUser}
-        onChange={onChangeHandler}
-        onSubmit={onSubmitHandler}
-        isLogin={true}
-      />
-    </div>
+    <Box
+      sx={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#f0f6ff',
+      }}
+    >
+      <Paper
+        elevation={2}
+        sx={{
+          p: { xs: 4, sm: 5 },
+          borderRadius: 3,
+          maxWidth: 400,
+          width: '100%',
+          backgroundColor: '#ffffff',
+        }}
+      >
+        <Typography variant="h4" fontWeight={700} sx={{ mb: 3 }}>
+          Login
+        </Typography>
+        <AuthForm
+          user={currentUser}
+          onChange={onChangeHandler}
+          onSubmit={onSubmitHandler}
+          isLogin={true}
+        />
+      </Paper>
+    </Box>
   );
 };
 

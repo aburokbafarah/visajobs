@@ -20,6 +20,8 @@ export function FiltersSide({
   setSelectedVisaTypes,
   selectedJobTypes,
   setSelectedJobTypes,
+  locationFilter,
+  setLocationFilter,
 }) {
   const toggleJobType = (jobType) => {
     if (selectedJobTypes.includes(jobType)) {
@@ -68,6 +70,19 @@ export function FiltersSide({
             />
           ))}
         </FormGroup>
+      </Box>
+
+      <Divider sx={{ my: 2 }} />
+
+      <Box>
+        <Typography variant="subtitle2" sx={{ mb: 1 }}>Location</Typography>
+        <TextField
+          fullWidth
+          size="small"
+          placeholder="e.g. Seattle, WA"
+          value={locationFilter}
+          onChange={(e) => setLocationFilter(e.target.value)}
+        />
       </Box>
     </Paper>
   );

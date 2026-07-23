@@ -10,7 +10,17 @@
   display: flex;
   gap: 40px;
   width: max-content;
-  animation: scroll 18s linear infinite;
+  /* The track is 2 identical copies back to back (each copy = the phrase
+     list repeated several times, see TICKER_COPY in navBar.jsx) for a
+     seamless loop via translateX(-50%). Flex `gap` only inserts *between*
+     items, one gap short of what's needed (N items per copy = N gaps
+     including the connecting one) for the halfway point to land exactly
+     on the seam between the two copies - this padding supplies that
+     missing gap so the loop doesn't visibly jump/stutter on restart. */
+  padding-right: 40px;
+  /* Duration scaled up with the track's width (4x longer than a single
+     un-repeated phrase list) to keep the scroll speed visually the same. */
+  animation: scroll 72s linear infinite;
 }
 
 .animationBarIn span {

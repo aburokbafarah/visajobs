@@ -10,9 +10,9 @@ import { AiTools } from '../aiTools';
 export default function Jobs() {
   const [jobs, setJobs] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [jobTypeFilter, setJobTypeFilter] = useState('');
   const [visaTypeFilter, setVisaTypeFilter] = useState([]);
   const [jobTypeCheckboxFilter, setJobTypeCheckboxFilter] = useState([]);
+  const [locationFilter, setLocationFilter] = useState('');
 
   // Fetch jobs from Parse whenever the visa type filter changes
   // (queries containedIn('sponsorship', ...) when types are selected, all jobs otherwise)
@@ -22,14 +22,17 @@ export default function Jobs() {
     });
   }, [visaTypeFilter]);
 
-  // Filter jobs based on search term and job type
+  // Filter jobs based on search term, job type, and location
   const filteredJobs = jobs.filter(
     (job) =>
       (job.get('title').toLowerCase().includes(searchTerm.toLowerCase()) ||
         job.get('company').toLowerCase().includes(searchTerm.toLowerCase())) &&
-      (jobTypeFilter === '' || job.get('jobType') === jobTypeFilter) &&
       (jobTypeCheckboxFilter.length === 0 ||
-        jobTypeCheckboxFilter.includes(job.get('jobType')))
+        jobTypeCheckboxFilter.includes(job.get('jobType'))) &&
+      (locationFilter === '' ||
+        (job.get('location') || '')
+          .toLowerCase()
+          .includes(locationFilter.toLowerCase()))
   );
 
   return (
@@ -52,14 +55,12 @@ export default function Jobs() {
           setSelectedVisaTypes={setVisaTypeFilter}
           selectedJobTypes={jobTypeCheckboxFilter}
           setSelectedJobTypes={setJobTypeCheckboxFilter}
+          locationFilter={locationFilter}
+          setLocationFilter={setLocationFilter}
         />
 
         <Box sx={{ flex: 1, minWidth: 0 }}>
-          <SearchBar
-            searchTerm={searchTerm}
-            setSearchTerm={setSearchTerm}
-            setJobTypeFilter={setJobTypeFilter}
-          />
+          <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           {/* Map over filtered jobs and display each as a JobCard */}
           <Stack spacing={2} sx={{ mt: 3 }}>
             {filteredJobs.map((job) => (

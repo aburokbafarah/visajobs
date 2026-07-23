@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { checkUser } from './AuthService';
 
@@ -14,18 +14,7 @@ const AuthModule = () => {
     }
   }, [navigate]);
 
-  return (
-    <div>
-      <Link to="/auth/register">
-        <button>Register</button>
-      </Link>
-      <br />
-      <br />
-      <Link to="/auth/login">
-        <button>Login</button>
-      </Link>
-    </div>
-  );
+  return <div />;
 };
 
 export default AuthModule;

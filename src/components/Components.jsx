@@ -4,20 +4,20 @@ import MainPage from './MainPage/MainPage';
 import AuthModule from './Auth/Auth';
 import AuthRegister from './Auth/AuthRegister';
 import AuthLogin from './Auth/AuthLogin';
-import ProtectedRoute from './Auth/ProtectedRoute';
 
 export default function Components() {
   return (
     <Router>
       <NavBar />
       <Routes>
-        {/* Public routes */}
+        {/* Auth routes */}
         <Route path="/auth" element={<AuthModule />} />
         <Route path="/auth/register" element={<AuthRegister />} />
         <Route path="/auth/login" element={<AuthLogin />} />
 
-        {/* Protected route - single scrolling page (Home/Jobs/Resources sections) */}
-        <Route path="/" element={<ProtectedRoute component={MainPage} />} />
+        {/* Single scrolling page (Home/Jobs/Resources sections) - public,
+            not gated behind login */}
+        <Route path="/" element={<MainPage />} />
 
         {/* Catch all */}
         <Route path="*" element={<Navigate to="/auth" replace />} />
