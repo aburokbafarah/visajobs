@@ -41,7 +41,7 @@ export async function getJobsBySponsorshipTypes(types) {
   try {
     const query = new Parse.Query(Job);
     if (types && types.length > 0) {
-      query.containedIn('visaType', types);
+      query.containedIn('sponsorship', types);
     }
     return await query.find();
   } catch (error) {
