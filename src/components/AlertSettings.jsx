@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import {
-  Paper,
   Box,
   Typography,
   Autocomplete,
@@ -72,14 +71,19 @@ export function AlertSettings() {
 
   if (!currentUser) {
     return (
-      <Paper variant="outlined" sx={{ p: 2.5 }}>
-        <Typography variant="body2">Log in to set up job alerts.</Typography>
-      </Paper>
+      <Box>
+        <Typography variant="h5" sx={{ fontWeight: 700, mb: 1 }}>
+          Job Alerts
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          Log in to set up job alerts.
+        </Typography>
+      </Box>
     );
   }
 
   return (
-    <Paper variant="outlined" sx={{ p: 2.5, maxWidth: 480 }}>
+    <Box>
       <Typography variant="h6" sx={{ mb: 2 }}>Email Job Alerts</Typography>
 
       <Box sx={{ mb: 2.5 }}>
@@ -117,6 +121,6 @@ export function AlertSettings() {
       <Button variant="contained" onClick={handleSave} disabled={loading}>
         Save Alert Preferences
       </Button>
-    </Paper>
+    </Box>
   );
 }

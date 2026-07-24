@@ -15,6 +15,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { alpha } from '@mui/material/styles';
 import Parse from 'parse';
 import { SavedJobs } from './SavedJobs';
+import { AlertSettings } from './AlertSettings';
 import { LoginRequiredDialog } from './LoginRequiredDialog';
 
 const AI_TOOLS = [
@@ -54,6 +55,7 @@ const toolButtonSx = {
 export function AiTools() {
   const navigate = useNavigate();
   const [savedJobsOpen, setSavedJobsOpen] = useState(false);
+  const [alertsOpen, setAlertsOpen] = useState(false);
   const [loginPromptTool, setLoginPromptTool] = useState(null);
 
   const handleToolClick = (tool) => {
@@ -92,6 +94,13 @@ export function AiTools() {
         >
           Saved Jobs
         </Button>
+        <Button
+          onClick={() => setAlertsOpen(true)}
+          endIcon={<ChevronRightIcon fontSize="small" />}
+          sx={toolButtonSx}
+        >
+          Job Alerts
+        </Button>
       </Stack>
 
       <Dialog
@@ -109,6 +118,24 @@ export function AiTools() {
         </IconButton>
         <DialogContent sx={{ pt: 5 }}>
           <SavedJobs />
+        </DialogContent>
+      </Dialog>
+
+      <Dialog
+        open={alertsOpen}
+        onClose={() => setAlertsOpen(false)}
+        maxWidth="sm"
+        fullWidth
+      >
+        <IconButton
+          onClick={() => setAlertsOpen(false)}
+          aria-label="Close"
+          sx={{ position: 'absolute', top: 8, right: 8 }}
+        >
+          <CloseIcon />
+        </IconButton>
+        <DialogContent sx={{ pt: 5 }}>
+          <AlertSettings />
         </DialogContent>
       </Dialog>
 
